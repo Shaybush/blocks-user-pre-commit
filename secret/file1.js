@@ -1,1 +1,1 @@
-console.log("init2");
+console.log("init22222");
