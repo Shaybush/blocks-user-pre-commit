@@ -31,7 +31,7 @@ Managing Git hooks directly through `.git/hooks` has limitations, especially in 
 2. **Cross-Team Consistency**:
 
    - Husky automatically ensures all team members follow the same pre-commit checks (e.g., linting, testing, formatting).
-   - Developers only need to run `npm install`, and Husky will handle the setup for them.
+   - Developers only need to run `pnpm install`, and Husky will handle the setup for them.
 
 3. **Ease of Setup**:
 
@@ -47,7 +47,7 @@ Managing Git hooks directly through `.git/hooks` has limitations, especially in 
 
 ## What Happens Automatically?
 
-1. When you clone the repository and run `npm install`, the `prepare` script in `package.json` automatically:
+1. When you clone the repository and run `pnpm install`, the `prepare` script in `package.json` automatically:
 
    - Installs Husky.
    - Sets up the `.husky/` directory and hooks.
@@ -65,7 +65,7 @@ Husky already automates permissions for hooks, but if you still encounter the ne
 
 #### 1. **Add a `prepare` Script in `package.json`**
 
-The `prepare` script in `package.json` ensures Husky installs hooks correctly during `npm install`. Here’s how it looks:
+The `prepare` script in `package.json` ensures Husky installs hooks correctly during `pnpm install`. Here’s how it looks:
 
 ```json
 "scripts": {
