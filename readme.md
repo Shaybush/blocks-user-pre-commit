@@ -57,16 +57,6 @@ Managing Git hooks directly through `.git/hooks` has limitations, especially in 
    - Retrieve the Git username making the commit.
    - Print the username before the commit proceeds.
 
-## What Do You Need to Do?
-
-### After Cloning the Repository:
-
-Simply run:
-
-```bash
-npm install
-```
-
 ---
 
 ### Second: Automating `chmod +x` to Avoid Manual Setup
