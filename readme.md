@@ -7,7 +7,7 @@
 1. **Clone the Repository**
 
 ```bash
-   git clone https://github.com/<your-username>/pre-commit-restriction-example.git
+   git clone https://github.com/Shaybush/blocks-user-pre-commit.git
    cd pre-commit-restriction-example
 ```
 
