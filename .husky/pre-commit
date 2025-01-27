@@ -1,8 +1,23 @@
 #!/usr/bin/env sh
 . "$(dirname "$0")/_/husky.sh"
 
-# Retrieve the current Git user's name
-user=$(git config user.name)
+# Get the current user's email from Git config
+user_email=$(git config user.email)
 
-# Display the user's name before the commit
-echo "The commit is being made by: $user"
+# Define the restricted folder
+restricted_folder="secret"
+
+# Define the allowed user email
+allowed_email="shaybush@gmail.com"
+
+# Check if changes in the restricted folder are staged
+if git diff --cached --name-only | grep -q "^${restricted_folder}/"; then
+  # If the user email doesn't match the allowed email, block the commit
+  if [ "$user_email" != "$allowed_email" ]; then
+    echo "❌ You are not allowed to commit changes to the '${restricted_folder}' folder."
+    echo "   Only the user with email '${allowed_email}' can modify this folder."
+    exit 1
+  fi
+fi
+
+# If no restricted changes or the user is allowed, proceed with the commit
