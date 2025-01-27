@@ -1,6 +1,6 @@
 # Git Hooks with Husky: Why and How We Use It
 
-## Why Did We Choose Husky?
+## Why Did I Choose Husky?
 
 Managing Git hooks directly through `.git/hooks` has limitations, especially in a team-based workflow. Here’s why we chose **Husky**:
 

@@ -1,25 +1,35 @@
-#!/usr/bin/env sh
-. "$(dirname "$0")/_/husky.sh"
-
-# Get the current user's email from Git config
+# get the current user's email from Git config
 user_email=$(git config user.email)
 
-# Define the restricted folder
-restricted_folder="secret"
+# define the restricted folders (space-separated)
+restricted_folders="secret private_folder another_folder"
 
-# Define the allowed user email
-allowed_email="shaybush@gmail.com"
+# define the allowed users (space-separated)
+allowed_users="user2@example.com user3@example.com shaybush93@gmail.com"
 
-echo "beforeee"
-# Check if changes in the restricted folder are staged
-if git diff --cached --name-only | grep -q "^${restricted_folder}/"; then
-  # If the user email doesn't match the allowed email, block the commit
-  echo "hereeee"
-  if [ "$user_email" != "$allowed_email" ]; then
-    echo "❌ You are not allowed to commit changes to the '${restricted_folder}' folder."
-    echo "   Only the user with email '${allowed_email}' can modify this folder."
-    exit 1
+# function to check if the current user is allowed
+is_user_allowed() {
+  for allowed_email in $allowed_users; do
+    if [ "$user_email" = "$allowed_email" ]; then
+      return 0 # user is allowed
+    fi
+  done
+  return 1 # user is not allowed
+}
+
+# loop through restricted folders and check if changes are staged
+for folder in $restricted_folders; do
+  if git diff --cached --name-only | grep -q "^${folder}/"; then
+    # if changes in the restricted folder are staged, check the user's email
+    if ! is_user_allowed; then
+      echo "❌ You are not allowed to commit changes to the '${folder}' folder."
+      echo "   Only the following users can modify this folder:"
+      for allowed_email in $allowed_users; do
+        echo "     - $allowed_email"
+      done
+      exit 1
+    fi
   fi
-fi
+done
 
 # If no restricted changes or the user is allowed, proceed with the commit
