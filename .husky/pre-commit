@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Retrieve the current Git user's name
+user=$(git config user.name)
+
+# Display the user's name before the commit
+echo "The commit is being made by: $user"
