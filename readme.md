@@ -8,7 +8,7 @@
 
 ```bash
    git clone https://github.com/Shaybush/blocks-user-pre-commit.git
-   cd pre-commit-restriction-example
+   cd blocks-user-pre-commit
 ```
 
 2. **Install Dependencies**
