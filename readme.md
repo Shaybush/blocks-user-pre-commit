@@ -1,4 +1,23 @@
+#
+
 # Git Hooks with Husky: Why and How We Use It
+
+## How to Set Up the Project
+
+1. **Clone the Repository**
+
+```bash
+   git clone https://github.com/<your-username>/pre-commit-restriction-example.git
+   cd pre-commit-restriction-example
+```
+
+2. **Install Dependencies**
+
+```bash
+   pnpm i
+```
+
+3. **Try to change file in secret folder and commit**
 
 ## Why Did I Choose Husky?
 
