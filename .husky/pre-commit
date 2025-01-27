@@ -23,10 +23,8 @@ for folder in $restricted_folders; do
     # if changes in the restricted folder are staged, check the user's email
     if ! is_user_allowed; then
       echo "❌ You are not allowed to commit changes to the '${folder}' folder."
-      echo "   Only the following users can modify this folder:"
-      for allowed_email in $allowed_users; do
-        echo "     - $allowed_email"
-      done
+      echo "   You can't change this folder:"
+      echo "     - $folder"
       exit 1
     fi
   fi
